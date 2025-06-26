@@ -98,6 +98,8 @@ void CustomMidasUnpackerStage::ProcessMidasEvent(TMEvent& event) {
         auto pdp = std::make_unique<PipelineDataProduct>();
         pdp->setName(label);
         pdp->setObject(std::move(list));
+        pdp->addTag("unpacked_data");
+        pdp->addTag("built_by_custom_midas_unpacker");
 
         productsToAdd.emplace(label, std::move(pdp));
 
